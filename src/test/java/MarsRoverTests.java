@@ -18,4 +18,43 @@ public class MarsRoverTests {
         Assert.assertEquals(1 , positionInfo.getLocation().getY());
         Assert.assertEquals(0 , positionInfo.getLocation().getX());
     }
+
+    @Test
+    public void should_add_X_on_W_direction_when_given_M_command() {
+        Location location = new Location(0,0);
+        PositionInfo positionInfo = new PositionInfo(location, Direction.W);
+        MarsRover marsRover = new MarsRover(positionInfo);
+
+        marsRover.processCommand(Command.M);
+
+        Assert.assertEquals(Direction.W, positionInfo.getDirection());
+        Assert.assertEquals(0 , positionInfo.getLocation().getY());
+        Assert.assertEquals(-1 , positionInfo.getLocation().getX());
+    }
+
+    @Test
+    public void should_add_Y_on_S_direction_when_given_M_command() {
+        Location location = new Location(0,0);
+        PositionInfo positionInfo = new PositionInfo(location, Direction.S);
+        MarsRover marsRover = new MarsRover(positionInfo);
+
+        marsRover.processCommand(Command.M);
+
+        Assert.assertEquals(Direction.S, positionInfo.getDirection());
+        Assert.assertEquals(-1 , positionInfo.getLocation().getY());
+        Assert.assertEquals(0 , positionInfo.getLocation().getX());
+    }
+
+    @Test
+    public void should_add_X_on_E_direction_when_given_M_command() {
+        Location location = new Location(0,0);
+        PositionInfo positionInfo = new PositionInfo(location, Direction.E);
+        MarsRover marsRover = new MarsRover(positionInfo);
+
+        marsRover.processCommand(Command.M);
+
+        Assert.assertEquals(Direction.E, positionInfo.getDirection());
+        Assert.assertEquals(0 , positionInfo.getLocation().getY());
+        Assert.assertEquals(1 , positionInfo.getLocation().getX());
+    }
 }

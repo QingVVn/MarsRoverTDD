@@ -1,4 +1,5 @@
 import Model.Command;
+import Model.Direction;
 import Model.Location;
 import Model.PositionInfo;
 
@@ -11,7 +12,23 @@ public class MarsRover {
 
     public void processCommand(Command command) {
         Location location = positionInfo.getLocation();
-        location.setY(location.getY()+1);
+        Direction direction = positionInfo.getDirection();
+        switch (direction)
+        {
+            case N:
+                location.setY(location.getY()+1);
+                break;
+            case S:
+                location.setY(location.getY()-1);
+                break;
+            case E:
+                location.setX(location.getX()+1);
+                break;
+            case W:
+                location.setX(location.getX()-1);
+                break;
+        }
+
         positionInfo.setLocation(location);
     }
 }
