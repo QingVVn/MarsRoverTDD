@@ -17,7 +17,10 @@ public class MarsRover {
                 processMoveCommand();
                 break;
             case L:
-                processLeftCommand();
+                processLeftCommand(positionInfo.getDirection());
+                break;
+            case R:
+                processRightCommand(positionInfo.getDirection());
                 break;
         }
     }
@@ -44,8 +47,7 @@ public class MarsRover {
         positionInfo.setLocation(location);
     }
 
-    public void processLeftCommand() {
-        Direction direction = positionInfo.getDirection();
+    public void processLeftCommand(Direction direction) {
         switch (direction)
         {
             case N:
@@ -59,6 +61,24 @@ public class MarsRover {
                 break;
             case W:
                 positionInfo.setDirection(Direction.S);
+                break;
+        }
+    }
+
+    public void processRightCommand(Direction direction) {
+        switch (direction)
+        {
+            case N:
+                positionInfo.setDirection(Direction.E);
+                break;
+            case S:
+                positionInfo.setDirection(Direction.W);
+                break;
+            case E:
+                positionInfo.setDirection(Direction.S);
+                break;
+            case W:
+                positionInfo.setDirection(Direction.N);
                 break;
         }
     }

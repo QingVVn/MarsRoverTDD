@@ -101,4 +101,48 @@ public class MarsRoverTests {
 
         Assert.assertEquals(Direction.E, positionInfo.getDirection());
     }
+
+    @Test
+    public void should_change_on_E_direction_when_given_R_command() {
+        Location location = new Location(0,0);
+        PositionInfo positionInfo = new PositionInfo(location, Direction.E);
+        MarsRover marsRover = new MarsRover(positionInfo);
+
+        marsRover.processCommand(Command.R);
+
+        Assert.assertEquals(Direction.S, positionInfo.getDirection());
+    }
+
+    @Test
+    public void should_change_on_W_direction_when_given_R_command() {
+        Location location = new Location(0,0);
+        PositionInfo positionInfo = new PositionInfo(location, Direction.W);
+        MarsRover marsRover = new MarsRover(positionInfo);
+
+        marsRover.processCommand(Command.R);
+
+        Assert.assertEquals(Direction.N, positionInfo.getDirection());
+    }
+
+    @Test
+    public void should_change_on_N_direction_when_given_R_command() {
+        Location location = new Location(0,0);
+        PositionInfo positionInfo = new PositionInfo(location, Direction.N);
+        MarsRover marsRover = new MarsRover(positionInfo);
+
+        marsRover.processCommand(Command.R);
+
+        Assert.assertEquals(Direction.E, positionInfo.getDirection());
+    }
+
+    @Test
+    public void should_change_on_S_direction_when_given_R_command() {
+        Location location = new Location(0,0);
+        PositionInfo positionInfo = new PositionInfo(location, Direction.S);
+        MarsRover marsRover = new MarsRover(positionInfo);
+
+        marsRover.processCommand(Command.R);
+
+        Assert.assertEquals(Direction.W, positionInfo.getDirection());
+    }
 }
