@@ -25,4 +25,9 @@ public class Location {
         this.y = y;
     }
 
+    public void Change(Location location) {
+        this.x += location.x;
+        this.y += location.y;
+    }
+
 }

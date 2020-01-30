@@ -1,6 +1,7 @@
 import Model.Command;
-import Model.Direction;
-import Model.Location;
+import Command.MoveCommand;
+import Command.LeftCommand;
+import Command.RightCommand;
 import Model.PositionInfo;
 
 public class MarsRover {
@@ -11,74 +12,19 @@ public class MarsRover {
     }
 
     public void processCommand(Command command) {
+        MoveCommand move = new MoveCommand();
+        LeftCommand left = new LeftCommand();
+        RightCommand right = new RightCommand();
         switch (command)
         {
             case M:
-                processMoveCommand();
+                move.Command(positionInfo);
                 break;
             case L:
-                processLeftCommand(positionInfo.getDirection());
+                left.Command(positionInfo);
                 break;
             case R:
-                processRightCommand(positionInfo.getDirection());
-                break;
-        }
-    }
-
-    public void processMoveCommand() {
-        Location location = positionInfo.getLocation();
-        Direction direction = positionInfo.getDirection();
-        switch (direction)
-        {
-            case N:
-                location.setY(location.getY()+1);
-                break;
-            case S:
-                location.setY(location.getY()-1);
-                break;
-            case E:
-                location.setX(location.getX()+1);
-                break;
-            case W:
-                location.setX(location.getX()-1);
-                break;
-        }
-
-        positionInfo.setLocation(location);
-    }
-
-    public void processLeftCommand(Direction direction) {
-        switch (direction)
-        {
-            case N:
-                positionInfo.setDirection(Direction.W);
-                break;
-            case S:
-                positionInfo.setDirection(Direction.E);
-                break;
-            case E:
-                positionInfo.setDirection(Direction.N);
-                break;
-            case W:
-                positionInfo.setDirection(Direction.S);
-                break;
-        }
-    }
-
-    public void processRightCommand(Direction direction) {
-        switch (direction)
-        {
-            case N:
-                positionInfo.setDirection(Direction.E);
-                break;
-            case S:
-                positionInfo.setDirection(Direction.W);
-                break;
-            case E:
-                positionInfo.setDirection(Direction.S);
-                break;
-            case W:
-                positionInfo.setDirection(Direction.N);
+                right.Command(positionInfo);
                 break;
         }
     }
