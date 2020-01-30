@@ -1,5 +1,6 @@
 package Command;
 
+import Model.Command;
 import Model.Direction;
 import Model.Location;
 import Model.PositionInfo;
@@ -18,8 +19,12 @@ public class MoveCommand implements ExcuteCommand{
 
     public void Command(PositionInfo positionInfo)
     {
-       Location newLocation = mapReletion.get(positionInfo.getDirection());
-       Location currentLocation = positionInfo.getLocation();
-       currentLocation.Change(newLocation);
+        Location newLocation = mapReletion.get(positionInfo.getDirection());
+        Location currentLocation = positionInfo.getLocation();
+        currentLocation.Change(newLocation);
+    }
+
+    public boolean isSatisfy(String command) {
+        return command.equalsIgnoreCase(Command.M.toString());
     }
 }

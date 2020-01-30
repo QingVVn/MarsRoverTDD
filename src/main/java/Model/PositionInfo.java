@@ -13,10 +13,6 @@ public class PositionInfo {
         return location;
     }
 
-    public void setLocation(Location location) {
-        this.location = location;
-    }
-
     public Direction getDirection() {
         return direction;
     }

@@ -12,7 +12,7 @@ public class MarsRoverTests {
         PositionInfo positionInfo = new PositionInfo(location, Direction.N);
         MarsRover marsRover = new MarsRover(positionInfo);
 
-        marsRover.processCommand(Command.M);
+        marsRover.GetInput("M");
 
         Assert.assertEquals(Direction.N, positionInfo.getDirection());
         Assert.assertEquals(1 , positionInfo.getLocation().getY());
@@ -25,7 +25,7 @@ public class MarsRoverTests {
         PositionInfo positionInfo = new PositionInfo(location, Direction.W);
         MarsRover marsRover = new MarsRover(positionInfo);
 
-        marsRover.processCommand(Command.M);
+        marsRover.GetInput("M");
 
         Assert.assertEquals(Direction.W, positionInfo.getDirection());
         Assert.assertEquals(0 , positionInfo.getLocation().getY());
@@ -38,7 +38,7 @@ public class MarsRoverTests {
         PositionInfo positionInfo = new PositionInfo(location, Direction.S);
         MarsRover marsRover = new MarsRover(positionInfo);
 
-        marsRover.processCommand(Command.M);
+        marsRover.GetInput("M");
 
         Assert.assertEquals(Direction.S, positionInfo.getDirection());
         Assert.assertEquals(-1 , positionInfo.getLocation().getY());
@@ -51,7 +51,7 @@ public class MarsRoverTests {
         PositionInfo positionInfo = new PositionInfo(location, Direction.E);
         MarsRover marsRover = new MarsRover(positionInfo);
 
-        marsRover.processCommand(Command.M);
+        marsRover.GetInput("M");
 
         Assert.assertEquals(Direction.E, positionInfo.getDirection());
         Assert.assertEquals(0 , positionInfo.getLocation().getY());
@@ -64,7 +64,7 @@ public class MarsRoverTests {
         PositionInfo positionInfo = new PositionInfo(location, Direction.E);
         MarsRover marsRover = new MarsRover(positionInfo);
 
-        marsRover.processCommand(Command.L);
+        marsRover.GetInput("L");
 
         Assert.assertEquals(Direction.N, positionInfo.getDirection());
     }
@@ -75,7 +75,7 @@ public class MarsRoverTests {
         PositionInfo positionInfo = new PositionInfo(location, Direction.W);
         MarsRover marsRover = new MarsRover(positionInfo);
 
-        marsRover.processCommand(Command.L);
+        marsRover.GetInput("L");
 
         Assert.assertEquals(Direction.S, positionInfo.getDirection());
     }
@@ -86,7 +86,7 @@ public class MarsRoverTests {
         PositionInfo positionInfo = new PositionInfo(location, Direction.N);
         MarsRover marsRover = new MarsRover(positionInfo);
 
-        marsRover.processCommand(Command.L);
+        marsRover.GetInput("L");
 
         Assert.assertEquals(Direction.W, positionInfo.getDirection());
     }
@@ -97,7 +97,7 @@ public class MarsRoverTests {
         PositionInfo positionInfo = new PositionInfo(location, Direction.S);
         MarsRover marsRover = new MarsRover(positionInfo);
 
-        marsRover.processCommand(Command.L);
+        marsRover.GetInput("L");
 
         Assert.assertEquals(Direction.E, positionInfo.getDirection());
     }
@@ -108,7 +108,7 @@ public class MarsRoverTests {
         PositionInfo positionInfo = new PositionInfo(location, Direction.E);
         MarsRover marsRover = new MarsRover(positionInfo);
 
-        marsRover.processCommand(Command.R);
+        marsRover.GetInput("R");
 
         Assert.assertEquals(Direction.S, positionInfo.getDirection());
     }
@@ -119,7 +119,7 @@ public class MarsRoverTests {
         PositionInfo positionInfo = new PositionInfo(location, Direction.W);
         MarsRover marsRover = new MarsRover(positionInfo);
 
-        marsRover.processCommand(Command.R);
+        marsRover.GetInput("R");
 
         Assert.assertEquals(Direction.N, positionInfo.getDirection());
     }
@@ -130,7 +130,7 @@ public class MarsRoverTests {
         PositionInfo positionInfo = new PositionInfo(location, Direction.N);
         MarsRover marsRover = new MarsRover(positionInfo);
 
-        marsRover.processCommand(Command.R);
+        marsRover.GetInput("R");
 
         Assert.assertEquals(Direction.E, positionInfo.getDirection());
     }
@@ -141,8 +141,21 @@ public class MarsRoverTests {
         PositionInfo positionInfo = new PositionInfo(location, Direction.S);
         MarsRover marsRover = new MarsRover(positionInfo);
 
-        marsRover.processCommand(Command.R);
+        marsRover.GetInput("R");
 
         Assert.assertEquals(Direction.W, positionInfo.getDirection());
+    }
+
+    @Test
+    public void should_Get_Correct_Position_when_given_commands() {
+        Location location = new Location(0,0);
+        PositionInfo positionInfo = new PositionInfo(location, Direction.N);
+        MarsRover marsRover = new MarsRover(positionInfo);
+
+        marsRover.GetInput("AFmml");
+
+        Assert.assertEquals(Direction.W, positionInfo.getDirection());
+        Assert.assertEquals(2 , positionInfo.getLocation().getY());
+        Assert.assertEquals(0 , positionInfo.getLocation().getX());
     }
 }

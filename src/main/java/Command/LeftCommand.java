@@ -1,7 +1,7 @@
 package Command;
 
 import Model.Direction;
-import Model.Location;
+import Model.Command;
 import Model.PositionInfo;
 
 import java.util.HashMap;
@@ -19,5 +19,9 @@ public class LeftCommand implements ExcuteCommand{
     {
         Direction newLocation = mapReletion.get(positionInfo.getDirection());
         positionInfo.setDirection(newLocation);
+    }
+
+    public boolean isSatisfy(String command) {
+        return command.equalsIgnoreCase(Command.L.toString());
     }
 }

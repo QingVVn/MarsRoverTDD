@@ -1,5 +1,6 @@
 package Command;
 
+import Model.Command;
 import Model.Direction;
 import Model.Location;
 import Model.PositionInfo;
@@ -19,5 +20,9 @@ public class RightCommand implements ExcuteCommand{
     {
         Direction newLocation = mapReletion.get(positionInfo.getDirection());
         positionInfo.setDirection(newLocation);
+    }
+
+    public boolean isSatisfy(String command) {
+        return command.equalsIgnoreCase(Command.R.toString());
     }
 }

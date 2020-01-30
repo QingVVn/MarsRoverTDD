@@ -1,8 +1,11 @@
-import Model.Command;
 import Command.MoveCommand;
 import Command.LeftCommand;
 import Command.RightCommand;
+import Command.ExcuteCommand;
 import Model.PositionInfo;
+
+import java.util.LinkedList;
+import java.util.List;
 
 public class MarsRover {
     private PositionInfo positionInfo;
@@ -11,21 +14,25 @@ public class MarsRover {
         this.positionInfo = positionInfo;
     }
 
-    public void processCommand(Command command) {
-        MoveCommand move = new MoveCommand();
-        LeftCommand left = new LeftCommand();
-        RightCommand right = new RightCommand();
-        switch (command)
+    public void GetInput(String input) {
+        List<ExcuteCommand> commands = new LinkedList<ExcuteCommand>()
+        {{
+            add(new MoveCommand());
+            add(new LeftCommand());
+            add(new RightCommand());
+        }};
+
+        var inputArray = input.toCharArray();
+        for (int i=0; i<inputArray.length; i++)
         {
-            case M:
-                move.Command(positionInfo);
-                break;
-            case L:
-                left.Command(positionInfo);
-                break;
-            case R:
-                right.Command(positionInfo);
-                break;
+            var command = String.valueOf(inputArray[i]);
+            commands.forEach(c->
+            {
+                if(c.isSatisfy(command))
+                {
+                    c.Command(positionInfo);
+                }
+            });
         }
     }
 }
