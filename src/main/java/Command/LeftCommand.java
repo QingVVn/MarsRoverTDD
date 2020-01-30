@@ -22,6 +22,6 @@ public class LeftCommand implements ExcuteCommand{
     }
 
     public boolean isSatisfy(String command) {
-        return command.equalsIgnoreCase(Command.L.toString());
+        return command.equals(Command.L.toString());
     }
 }

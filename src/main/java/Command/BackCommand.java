@@ -24,6 +24,6 @@ public class BackCommand implements ExcuteCommand{
     }
 
     public boolean isSatisfy(String command) {
-        return command.equalsIgnoreCase(Command.B.toString());
+        return command.equals(Command.B.toString());
     }
 }

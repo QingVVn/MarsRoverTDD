@@ -25,6 +25,6 @@ public class MoveCommand implements ExcuteCommand{
     }
 
     public boolean isSatisfy(String command) {
-        return command.equalsIgnoreCase(Command.M.toString());
+        return command.equals(Command.M.toString());
     }
 }

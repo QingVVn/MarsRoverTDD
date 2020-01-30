@@ -23,6 +23,6 @@ public class RightCommand implements ExcuteCommand{
     }
 
     public boolean isSatisfy(String command) {
-        return command.equalsIgnoreCase(Command.R.toString());
+        return command.equals(Command.R.toString());
     }
 }
