@@ -1,4 +1,3 @@
-import Model.Command;
 import Model.Direction;
 import Model.Location;
 import Model.PositionInfo;
@@ -156,6 +155,19 @@ public class MarsRoverTests {
 
         Assert.assertEquals(Direction.W, positionInfo.getDirection());
         Assert.assertEquals(2 , positionInfo.getLocation().getY());
+        Assert.assertEquals(0 , positionInfo.getLocation().getX());
+    }
+
+    @Test
+    public void should_add_Y_on_S_direction_when_given_B_command() {
+        Location location = new Location(0,0);
+        PositionInfo positionInfo = new PositionInfo(location, Direction.S);
+        MarsRover marsRover = new MarsRover(positionInfo);
+
+        marsRover.GetInput("B");
+
+        Assert.assertEquals(Direction.S, positionInfo.getDirection());
+        Assert.assertEquals(1 , positionInfo.getLocation().getY());
         Assert.assertEquals(0 , positionInfo.getLocation().getX());
     }
 }

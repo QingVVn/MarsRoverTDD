@@ -1,7 +1,4 @@
-import Command.MoveCommand;
-import Command.LeftCommand;
-import Command.RightCommand;
-import Command.ExcuteCommand;
+import Command.*;
 import Model.PositionInfo;
 
 import java.util.LinkedList;
@@ -20,6 +17,7 @@ public class MarsRover {
             add(new MoveCommand());
             add(new LeftCommand());
             add(new RightCommand());
+            add(new BackCommand());
         }};
 
         var inputArray = input.toCharArray();
